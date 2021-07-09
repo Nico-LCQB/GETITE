@@ -8,4 +8,4 @@ on the top left pannel
 
 The file "Input.example.xls is a typical exemple of the input file
 
-This version 3.1 add a graphical export (BoxPlot) of the results
+This version 3.2 add a graphical export (BoxPlot) of the results
