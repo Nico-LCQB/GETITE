@@ -1,5 +1,5 @@
 # GETITE
-a simple graphical tool analyse growth curve and determine growth rate
+a simple graphical tool to analyse growth curve and determine growth rate from plate growth experiment
 
 The following packages are required : \t
 	shiny \t
