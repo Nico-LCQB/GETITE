@@ -5,7 +5,7 @@ library(ggplot2)
 library(gridExtra)
 library(DT)
 
-# GEneration TIme from TEcan data version 1.2 (11-12-2020)
+# GEneration TIme from TEcan data version 3.2 (29-06-2021)
 # Use with R studio
 # Be sure to have all the packages listed above installed
 # Input file is excel file, direct output from the TECAN, with a little formating
@@ -633,7 +633,6 @@ server <- function(session, input, output) {
   })
   
   PLTval <- reactive({
-#    round(log10(median(PLT2()[,2]-PLT2()[,3])),5) formule alternative
     median(PLT2()[,2]-PLT2()[,3])
       })
   
@@ -641,11 +640,7 @@ server <- function(session, input, output) {
     inFile <- input$file1
     if (input$Sample == input$Bkg)
       return("NULL")
-#    if (PLTval() !="")
-#      return("no plateau detected")
-#    paste0("Plateau detected at  = ",PLTval(), "  from ",round(min(PLT2()[,1])/60,0), " to ", round(max(PLT2()[,1])/60,0))
-     paste0("Plateau detected at  OD = ",PLTval(), "  (graph value :",round(log10(PLTval()),3),")")
-    
+      paste0("Plateau detected at  OD = ",PLTval(), "  (graph value :",round(log10(PLTval()),3),")")    
       })
   
   output$GTable <- renderDataTable(df())
@@ -688,7 +683,6 @@ server <- function(session, input, output) {
   })
   
  exportBoxPlot <- reactive({
-#    plot(as.numeric(Res2()[,2]),Res2()[,3])
     ggplot(Res2(), aes(x=Sample, y=as.numeric(as.character(val)))) + geom_boxplot() + geom_dotplot(binaxis='y', stackdir='center', dotsize=0.5) + xlab("Strain") + ylab("Generation Time (min)")
   })
   
